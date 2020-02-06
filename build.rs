@@ -89,6 +89,7 @@ fn build() {
 
         if has_env_var_with_value("FF_DO_CODEGEN", "1") {
             // RUN
+            // todo maybe put headers to repo instead of linking against system ones
             bindgen::Builder::default()
                 .header("headers.h")
                 .parse_callbacks(Box::new(ignored_macros.clone()))
