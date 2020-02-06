@@ -1,23 +1,19 @@
 [package]
-name = "ffmpeg-dev"
+name = "ffmpeg4-ffi"
 version = "0.3.8"
 authors = ["colbyn <hello@colbyn.com>"]
 edition = "2018"
 keywords = ["video", "ffmpeg"]
-description = "Self contained (no net/sys deps) static rust bindings to ffmpeg."
+#description = "Self contained (no net/sys deps) static rust bindings to ffmpeg."
 license = "MIT"
-homepage = "https://github.com/imager-io/ffmpeg-dev-rs"
-repository = "https://github.com/imager-io/ffmpeg-dev-rs"
+#homepage = "https://github.com/imager-io/ffmpeg-dev-rs"
+#repository = "https://github.com/imager-io/ffmpeg-dev-rs"
 readme = "README.md"
-exclude = ["assets", "examples"]
+exclude = []
 
 [dependencies]
 libc = "^0.2"
-num_cpus = "1.11.1"
 
 [build-dependencies]
-tar = "0.4.26"
-flate2 = "1.0.12"
 bindgen = "0.51"
-num_cpus = "1.11.1"
 cc = "1.0.46"
