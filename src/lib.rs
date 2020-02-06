@@ -11,5 +11,4 @@
 #![allow(safe_packed_borrows)]
 
 pub mod sys;
-pub mod api;
 pub mod extra;
