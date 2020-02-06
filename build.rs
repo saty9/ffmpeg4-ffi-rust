@@ -105,7 +105,6 @@ fn build() {
     // COMPILE CBITS
     cc::Build::new()
         .file("cbits/defs.c")
-        .file("cbits/img_utils.c")
         .compile("cbits");
 }
 
