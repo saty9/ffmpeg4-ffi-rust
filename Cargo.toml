@@ -1,16 +1,17 @@
+# upstream version: 0.3.8
+
 [package]
 name = "ffmpeg4-ffi"
 version = "0.3.8"
-authors = ["colbyn <hello@colbyn.com>"]
+authors = ["AbsurdlySuspicious <repom2@airmail.cc>", "colbyn <hello@colbyn.com>"]
 edition = "2018"
 keywords = ["video", "ffmpeg"]
-#description = "Self contained (no net/sys deps) static rust bindings to ffmpeg."
+description = "Dynamic-linked rust bindings to ffmpeg."
 license = "MIT"
-#homepage = "https://github.com/imager-io/ffmpeg-dev-rs"
-#repository = "https://github.com/imager-io/ffmpeg-dev-rs"
+homepage = "https://github.com/AbsurdlySuspicious/ffmpeg4-ffi-rust"
+repository = "https://github.com/AbsurdlySuspicious/ffmpeg4-ffi-rust"
 readme = "README.md"
 exclude = []
-publish = false
 
 [dependencies]
 libc = "^0.2"
