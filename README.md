@@ -1,5 +1,7 @@
 # ffmpeg4-ffi
 
+[![cargo](https://img.shields.io/crates/v/ffmpeg4-ffi)](https://crates.io/crates/ffmpeg4-ffi)
+
 Rust bindings for ffmpeg, fork of ffmpeg-dev
 
 Differences from original repo:
