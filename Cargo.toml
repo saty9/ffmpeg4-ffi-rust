@@ -17,5 +17,5 @@ exclude = []
 libc = "^0.2"
 
 [build-dependencies]
-bindgen = "0.51"
+bindgen = "0.53.1"
 cc = "1.0.46"

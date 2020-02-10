@@ -2850,6 +2850,7 @@ pub const FP_ZERO: _bindgen_ty_1 = 2;
 pub const FP_SUBNORMAL: _bindgen_ty_1 = 3;
 pub const FP_NORMAL: _bindgen_ty_1 = 4;
 pub type _bindgen_ty_1 = u32;
+pub type size_t = ::std::os::raw::c_ulong;
 pub type va_list = __builtin_va_list;
 pub type __gnuc_va_list = __builtin_va_list;
 #[repr(C)]
@@ -2926,11 +2927,12 @@ pub struct _IO_FILE {
     pub _wide_data: *mut _IO_wide_data,
     pub _freeres_list: *mut _IO_FILE,
     pub _freeres_buf: *mut ::std::os::raw::c_void,
-    pub __pad5: usize,
+    pub __pad5: size_t,
     pub _mode: ::std::os::raw::c_int,
     pub _unused2: [::std::os::raw::c_char; 20usize],
 }
 pub type off_t = __off_t;
+pub type ssize_t = __ssize_t;
 pub type fpos_t = __fpos_t;
 extern "C" {
     pub static mut stdin: *mut FILE;
@@ -3002,14 +3004,14 @@ extern "C" {
 extern "C" {
     pub fn fmemopen(
         __s: *mut ::std::os::raw::c_void,
-        __len: usize,
+        __len: size_t,
         __modes: *const ::std::os::raw::c_char,
     ) -> *mut FILE;
 }
 extern "C" {
     pub fn open_memstream(
         __bufloc: *mut *mut ::std::os::raw::c_char,
-        __sizeloc: *mut usize,
+        __sizeloc: *mut size_t,
     ) -> *mut FILE;
 }
 extern "C" {
@@ -3020,11 +3022,11 @@ extern "C" {
         __stream: *mut FILE,
         __buf: *mut ::std::os::raw::c_char,
         __modes: ::std::os::raw::c_int,
-        __n: usize,
+        __n: size_t,
     ) -> ::std::os::raw::c_int;
 }
 extern "C" {
-    pub fn setbuffer(__stream: *mut FILE, __buf: *mut ::std::os::raw::c_char, __size: usize);
+    pub fn setbuffer(__stream: *mut FILE, __buf: *mut ::std::os::raw::c_char, __size: size_t);
 }
 extern "C" {
     pub fn setlinebuf(__stream: *mut FILE);
@@ -3229,7 +3231,7 @@ extern "C" {
 extern "C" {
     pub fn __getdelim(
         __lineptr: *mut *mut ::std::os::raw::c_char,
-        __n: *mut usize,
+        __n: *mut size_t,
         __delimiter: ::std::os::raw::c_int,
         __stream: *mut FILE,
     ) -> __ssize_t;
@@ -3237,7 +3239,7 @@ extern "C" {
 extern "C" {
     pub fn getdelim(
         __lineptr: *mut *mut ::std::os::raw::c_char,
-        __n: *mut usize,
+        __n: *mut size_t,
         __delimiter: ::std::os::raw::c_int,
         __stream: *mut FILE,
     ) -> __ssize_t;
@@ -3245,7 +3247,7 @@ extern "C" {
 extern "C" {
     pub fn getline(
         __lineptr: *mut *mut ::std::os::raw::c_char,
-        __n: *mut usize,
+        __n: *mut size_t,
         __stream: *mut FILE,
     ) -> __ssize_t;
 }
@@ -3277,18 +3279,18 @@ extern "C" {
 extern "C" {
     pub fn fread_unlocked(
         __ptr: *mut ::std::os::raw::c_void,
-        __size: usize,
-        __n: usize,
+        __size: size_t,
+        __n: size_t,
         __stream: *mut FILE,
-    ) -> usize;
+    ) -> size_t;
 }
 extern "C" {
     pub fn fwrite_unlocked(
         __ptr: *const ::std::os::raw::c_void,
-        __size: usize,
-        __n: usize,
+        __size: size_t,
+        __n: size_t,
         __stream: *mut FILE,
-    ) -> usize;
+    ) -> size_t;
 }
 extern "C" {
     pub fn fseek(
@@ -3399,7 +3401,7 @@ pub struct lldiv_t {
     pub rem: ::std::os::raw::c_longlong,
 }
 extern "C" {
-    pub fn __ctype_get_mb_cur_max() -> usize;
+    pub fn __ctype_get_mb_cur_max() -> size_t;
 }
 extern "C" {
     pub fn atof(__nptr: *const ::std::os::raw::c_char) -> f64;
@@ -3711,7 +3713,7 @@ extern "C" {
     pub fn initstate(
         __seed: ::std::os::raw::c_uint,
         __statebuf: *mut ::std::os::raw::c_char,
-        __statelen: usize,
+        __statelen: size_t,
     ) -> *mut ::std::os::raw::c_char;
 }
 extern "C" {
@@ -3741,7 +3743,7 @@ extern "C" {
     pub fn initstate_r(
         __seed: ::std::os::raw::c_uint,
         __statebuf: *mut ::std::os::raw::c_char,
-        __statelen: usize,
+        __statelen: size_t,
         __buf: *mut random_data,
     ) -> ::std::os::raw::c_int;
 }
@@ -3868,8 +3870,8 @@ extern "C" {
 extern "C" {
     pub fn reallocarray(
         __ptr: *mut ::std::os::raw::c_void,
-        __nmemb: usize,
-        __size: usize,
+        __nmemb: size_t,
+        __size: size_t,
     ) -> *mut ::std::os::raw::c_void;
 }
 extern "C" {
@@ -3879,17 +3881,17 @@ extern "C" {
     pub fn alloca(__size: ::std::os::raw::c_ulong) -> *mut ::std::os::raw::c_void;
 }
 extern "C" {
-    pub fn valloc(__size: usize) -> *mut ::std::os::raw::c_void;
+    pub fn valloc(__size: size_t) -> *mut ::std::os::raw::c_void;
 }
 extern "C" {
     pub fn posix_memalign(
         __memptr: *mut *mut ::std::os::raw::c_void,
-        __alignment: usize,
-        __size: usize,
+        __alignment: size_t,
+        __size: size_t,
     ) -> ::std::os::raw::c_int;
 }
 extern "C" {
-    pub fn aligned_alloc(__alignment: usize, __size: usize) -> *mut ::std::os::raw::c_void;
+    pub fn aligned_alloc(__alignment: size_t, __size: size_t) -> *mut ::std::os::raw::c_void;
 }
 extern "C" {
     pub fn abort();
@@ -3975,16 +3977,16 @@ extern "C" {
     pub fn bsearch(
         __key: *const ::std::os::raw::c_void,
         __base: *const ::std::os::raw::c_void,
-        __nmemb: usize,
-        __size: usize,
+        __nmemb: size_t,
+        __size: size_t,
         __compar: __compar_fn_t,
     ) -> *mut ::std::os::raw::c_void;
 }
 extern "C" {
     pub fn qsort(
         __base: *mut ::std::os::raw::c_void,
-        __nmemb: usize,
-        __size: usize,
+        __nmemb: size_t,
+        __size: size_t,
         __compar: __compar_fn_t,
     );
 }
@@ -4062,7 +4064,7 @@ extern "C" {
         __decpt: *mut ::std::os::raw::c_int,
         __sign: *mut ::std::os::raw::c_int,
         __buf: *mut ::std::os::raw::c_char,
-        __len: usize,
+        __len: size_t,
     ) -> ::std::os::raw::c_int;
 }
 extern "C" {
@@ -4072,7 +4074,7 @@ extern "C" {
         __decpt: *mut ::std::os::raw::c_int,
         __sign: *mut ::std::os::raw::c_int,
         __buf: *mut ::std::os::raw::c_char,
-        __len: usize,
+        __len: size_t,
     ) -> ::std::os::raw::c_int;
 }
 extern "C" {
@@ -4082,7 +4084,7 @@ extern "C" {
         __decpt: *mut ::std::os::raw::c_int,
         __sign: *mut ::std::os::raw::c_int,
         __buf: *mut ::std::os::raw::c_char,
-        __len: usize,
+        __len: size_t,
     ) -> ::std::os::raw::c_int;
 }
 extern "C" {
@@ -4092,27 +4094,35 @@ extern "C" {
         __decpt: *mut ::std::os::raw::c_int,
         __sign: *mut ::std::os::raw::c_int,
         __buf: *mut ::std::os::raw::c_char,
-        __len: usize,
+        __len: size_t,
     ) -> ::std::os::raw::c_int;
 }
 extern "C" {
-    pub fn mblen(__s: *const ::std::os::raw::c_char, __n: usize) -> ::std::os::raw::c_int;
+    pub fn mblen(__s: *const ::std::os::raw::c_char, __n: size_t) -> ::std::os::raw::c_int;
 }
 extern "C" {
     pub fn mbtowc(
         __pwc: *mut wchar_t,
         __s: *const ::std::os::raw::c_char,
-        __n: usize,
+        __n: size_t,
     ) -> ::std::os::raw::c_int;
 }
 extern "C" {
     pub fn wctomb(__s: *mut ::std::os::raw::c_char, __wchar: wchar_t) -> ::std::os::raw::c_int;
 }
 extern "C" {
-    pub fn mbstowcs(__pwcs: *mut wchar_t, __s: *const ::std::os::raw::c_char, __n: usize) -> usize;
+    pub fn mbstowcs(
+        __pwcs: *mut wchar_t,
+        __s: *const ::std::os::raw::c_char,
+        __n: size_t,
+    ) -> size_t;
 }
 extern "C" {
-    pub fn wcstombs(__s: *mut ::std::os::raw::c_char, __pwcs: *const wchar_t, __n: usize) -> usize;
+    pub fn wcstombs(
+        __s: *mut ::std::os::raw::c_char,
+        __pwcs: *const wchar_t,
+        __n: size_t,
+    ) -> size_t;
 }
 extern "C" {
     pub fn rpmatch(__response: *const ::std::os::raw::c_char) -> ::std::os::raw::c_int;
@@ -4147,7 +4157,7 @@ extern "C" {
         __dest: *mut ::std::os::raw::c_void,
         __src: *const ::std::os::raw::c_void,
         __c: ::std::os::raw::c_int,
-        __n: usize,
+        __n: size_t,
     ) -> *mut ::std::os::raw::c_void;
 }
 extern "C" {
@@ -4245,9 +4255,9 @@ extern "C" {
     pub fn strxfrm_l(
         __dest: *mut ::std::os::raw::c_char,
         __src: *const ::std::os::raw::c_char,
-        __n: usize,
+        __n: size_t,
         __l: locale_t,
-    ) -> usize;
+    ) -> size_t;
 }
 extern "C" {
     pub fn strdup(__s: *const ::std::os::raw::c_char) -> *mut ::std::os::raw::c_char;
@@ -4318,7 +4328,7 @@ extern "C" {
     pub fn strlen(__s: *const ::std::os::raw::c_char) -> ::std::os::raw::c_ulong;
 }
 extern "C" {
-    pub fn strnlen(__string: *const ::std::os::raw::c_char, __maxlen: usize) -> usize;
+    pub fn strnlen(__string: *const ::std::os::raw::c_char, __maxlen: size_t) -> size_t;
 }
 extern "C" {
     pub fn strerror(__errnum: ::std::os::raw::c_int) -> *mut ::std::os::raw::c_char;
@@ -4328,7 +4338,7 @@ extern "C" {
     pub fn strerror_r(
         __errnum: ::std::os::raw::c_int,
         __buf: *mut ::std::os::raw::c_char,
-        __buflen: usize,
+        __buflen: size_t,
     ) -> ::std::os::raw::c_int;
 }
 extern "C" {
@@ -4348,7 +4358,7 @@ extern "C" {
     pub fn bcopy(
         __src: *const ::std::os::raw::c_void,
         __dest: *mut ::std::os::raw::c_void,
-        __n: usize,
+        __n: size_t,
     );
 }
 extern "C" {
@@ -4399,12 +4409,12 @@ extern "C" {
     pub fn strncasecmp_l(
         __s1: *const ::std::os::raw::c_char,
         __s2: *const ::std::os::raw::c_char,
-        __n: usize,
+        __n: size_t,
         __loc: locale_t,
     ) -> ::std::os::raw::c_int;
 }
 extern "C" {
-    pub fn explicit_bzero(__s: *mut ::std::os::raw::c_void, __n: usize);
+    pub fn explicit_bzero(__s: *mut ::std::os::raw::c_void, __n: size_t);
 }
 extern "C" {
     pub fn strsep(
@@ -4431,7 +4441,7 @@ extern "C" {
     pub fn __stpncpy(
         __dest: *mut ::std::os::raw::c_char,
         __src: *const ::std::os::raw::c_char,
-        __n: usize,
+        __n: size_t,
     ) -> *mut ::std::os::raw::c_char;
 }
 extern "C" {
@@ -4459,7 +4469,7 @@ extern "C" {
     pub fn av_strerror(
         errnum: ::std::os::raw::c_int,
         errbuf: *mut ::std::os::raw::c_char,
-        errbuf_size: usize,
+        errbuf_size: size_t,
     ) -> ::std::os::raw::c_int;
 }
 extern "C" {
@@ -5019,67 +5029,69 @@ extern "C" {
     ) -> *mut ::std::os::raw::c_char;
 }
 extern "C" {
-    pub fn av_malloc(size: usize) -> *mut ::std::os::raw::c_void;
+    pub fn av_malloc(size: size_t) -> *mut ::std::os::raw::c_void;
 }
 extern "C" {
-    pub fn av_mallocz(size: usize) -> *mut ::std::os::raw::c_void;
+    pub fn av_mallocz(size: size_t) -> *mut ::std::os::raw::c_void;
 }
 extern "C" {
-    pub fn av_malloc_array(nmemb: usize, size: usize) -> *mut ::std::os::raw::c_void;
+    pub fn av_malloc_array(nmemb: size_t, size: size_t) -> *mut ::std::os::raw::c_void;
 }
 extern "C" {
-    pub fn av_mallocz_array(nmemb: usize, size: usize) -> *mut ::std::os::raw::c_void;
+    pub fn av_mallocz_array(nmemb: size_t, size: size_t) -> *mut ::std::os::raw::c_void;
 }
 extern "C" {
-    pub fn av_calloc(nmemb: usize, size: usize) -> *mut ::std::os::raw::c_void;
+    pub fn av_calloc(nmemb: size_t, size: size_t) -> *mut ::std::os::raw::c_void;
 }
 extern "C" {
-    pub fn av_realloc(ptr: *mut ::std::os::raw::c_void, size: usize)
-        -> *mut ::std::os::raw::c_void;
+    pub fn av_realloc(
+        ptr: *mut ::std::os::raw::c_void,
+        size: size_t,
+    ) -> *mut ::std::os::raw::c_void;
 }
 extern "C" {
-    pub fn av_reallocp(ptr: *mut ::std::os::raw::c_void, size: usize) -> ::std::os::raw::c_int;
+    pub fn av_reallocp(ptr: *mut ::std::os::raw::c_void, size: size_t) -> ::std::os::raw::c_int;
 }
 extern "C" {
     pub fn av_realloc_f(
         ptr: *mut ::std::os::raw::c_void,
-        nelem: usize,
-        elsize: usize,
+        nelem: size_t,
+        elsize: size_t,
     ) -> *mut ::std::os::raw::c_void;
 }
 extern "C" {
     pub fn av_realloc_array(
         ptr: *mut ::std::os::raw::c_void,
-        nmemb: usize,
-        size: usize,
+        nmemb: size_t,
+        size: size_t,
     ) -> *mut ::std::os::raw::c_void;
 }
 extern "C" {
     pub fn av_reallocp_array(
         ptr: *mut ::std::os::raw::c_void,
-        nmemb: usize,
-        size: usize,
+        nmemb: size_t,
+        size: size_t,
     ) -> ::std::os::raw::c_int;
 }
 extern "C" {
     pub fn av_fast_realloc(
         ptr: *mut ::std::os::raw::c_void,
         size: *mut ::std::os::raw::c_uint,
-        min_size: usize,
+        min_size: size_t,
     ) -> *mut ::std::os::raw::c_void;
 }
 extern "C" {
     pub fn av_fast_malloc(
         ptr: *mut ::std::os::raw::c_void,
         size: *mut ::std::os::raw::c_uint,
-        min_size: usize,
+        min_size: size_t,
     );
 }
 extern "C" {
     pub fn av_fast_mallocz(
         ptr: *mut ::std::os::raw::c_void,
         size: *mut ::std::os::raw::c_uint,
-        min_size: usize,
+        min_size: size_t,
     );
 }
 extern "C" {
@@ -5092,10 +5104,12 @@ extern "C" {
     pub fn av_strdup(s: *const ::std::os::raw::c_char) -> *mut ::std::os::raw::c_char;
 }
 extern "C" {
-    pub fn av_strndup(s: *const ::std::os::raw::c_char, len: usize) -> *mut ::std::os::raw::c_char;
+    pub fn av_strndup(s: *const ::std::os::raw::c_char, len: size_t)
+        -> *mut ::std::os::raw::c_char;
 }
 extern "C" {
-    pub fn av_memdup(p: *const ::std::os::raw::c_void, size: usize) -> *mut ::std::os::raw::c_void;
+    pub fn av_memdup(p: *const ::std::os::raw::c_void, size: size_t)
+        -> *mut ::std::os::raw::c_void;
 }
 extern "C" {
     pub fn av_memcpy_backptr(dst: *mut u8, back: ::std::os::raw::c_int, cnt: ::std::os::raw::c_int);
@@ -5118,12 +5132,12 @@ extern "C" {
     pub fn av_dynarray2_add(
         tab_ptr: *mut *mut ::std::os::raw::c_void,
         nb_ptr: *mut ::std::os::raw::c_int,
-        elem_size: usize,
+        elem_size: size_t,
         elem_data: *const u8,
     ) -> *mut ::std::os::raw::c_void;
 }
 extern "C" {
-    pub fn av_max_alloc(max: usize);
+    pub fn av_max_alloc(max: size_t);
 }
 extern "C" {
     pub fn av_display_rotation_get(matrix: *const i32) -> f64;
@@ -5185,13 +5199,13 @@ extern "C" {
 extern "C" {
     pub fn av_encryption_info_get_side_data(
         side_data: *const u8,
-        side_data_size: usize,
+        side_data_size: size_t,
     ) -> *mut AVEncryptionInfo;
 }
 extern "C" {
     pub fn av_encryption_info_add_side_data(
         info: *const AVEncryptionInfo,
-        side_data_size: *mut usize,
+        side_data_size: *mut size_t,
     ) -> *mut u8;
 }
 extern "C" {
@@ -5208,13 +5222,13 @@ extern "C" {
 extern "C" {
     pub fn av_encryption_init_info_get_side_data(
         side_data: *const u8,
-        side_data_size: usize,
+        side_data_size: size_t,
     ) -> *mut AVEncryptionInitInfo;
 }
 extern "C" {
     pub fn av_encryption_init_info_add_side_data(
         info: *const AVEncryptionInitInfo,
-        side_data_size: *mut usize,
+        side_data_size: *mut size_t,
     ) -> *mut u8;
 }
 #[repr(C)]
@@ -5278,13 +5292,13 @@ extern "C" {
     pub fn av_file_map(
         filename: *const ::std::os::raw::c_char,
         bufptr: *mut *mut u8,
-        size: *mut usize,
+        size: *mut size_t,
         log_offset: ::std::os::raw::c_int,
         log_ctx: *mut ::std::os::raw::c_void,
     ) -> ::std::os::raw::c_int;
 }
 extern "C" {
-    pub fn av_file_unmap(bufptr: *mut u8, size: usize);
+    pub fn av_file_unmap(bufptr: *mut u8, size: size_t);
 }
 extern "C" {
     pub fn av_tempfile(
@@ -5589,10 +5603,10 @@ pub struct AVFrame {
     pub qp_table_buf: *mut AVBufferRef,
     pub hw_frames_ctx: *mut AVBufferRef,
     pub opaque_ref: *mut AVBufferRef,
-    pub crop_top: usize,
-    pub crop_bottom: usize,
-    pub crop_left: usize,
-    pub crop_right: usize,
+    pub crop_top: size_t,
+    pub crop_bottom: size_t,
+    pub crop_left: size_t,
+    pub crop_right: size_t,
     pub private_ref: *mut AVBufferRef,
 }
 extern "C" {
@@ -6762,30 +6776,30 @@ extern "C" {
     pub fn av_strnstr(
         haystack: *const ::std::os::raw::c_char,
         needle: *const ::std::os::raw::c_char,
-        hay_length: usize,
+        hay_length: size_t,
     ) -> *mut ::std::os::raw::c_char;
 }
 extern "C" {
     pub fn av_strlcpy(
         dst: *mut ::std::os::raw::c_char,
         src: *const ::std::os::raw::c_char,
-        size: usize,
-    ) -> usize;
+        size: size_t,
+    ) -> size_t;
 }
 extern "C" {
     pub fn av_strlcat(
         dst: *mut ::std::os::raw::c_char,
         src: *const ::std::os::raw::c_char,
-        size: usize,
-    ) -> usize;
+        size: size_t,
+    ) -> size_t;
 }
 extern "C" {
     pub fn av_strlcatf(
         dst: *mut ::std::os::raw::c_char,
-        size: usize,
+        size: size_t,
         fmt: *const ::std::os::raw::c_char,
         ...
-    ) -> usize;
+    ) -> size_t;
 }
 extern "C" {
     pub fn av_asprintf(fmt: *const ::std::os::raw::c_char, ...) -> *mut ::std::os::raw::c_char;
@@ -6816,7 +6830,7 @@ extern "C" {
     pub fn av_strncasecmp(
         a: *const ::std::os::raw::c_char,
         b: *const ::std::os::raw::c_char,
-        n: usize,
+        n: size_t,
     ) -> ::std::os::raw::c_int;
 }
 extern "C" {
@@ -7167,7 +7181,7 @@ extern "C" {
     pub fn av_cpu_count() -> ::std::os::raw::c_int;
 }
 extern "C" {
-    pub fn av_cpu_max_align() -> usize;
+    pub fn av_cpu_max_align() -> size_t;
 }
 pub const AVCodecID_AV_CODEC_ID_NONE: AVCodecID = 0;
 pub const AVCodecID_AV_CODEC_ID_MPEG1VIDEO: AVCodecID = 1;
@@ -8432,7 +8446,7 @@ extern "C" {
         pkt: *mut AVPacket,
         type_: AVPacketSideDataType,
         data: *mut u8,
-        size: usize,
+        size: size_t,
     ) -> ::std::os::raw::c_int;
 }
 extern "C" {
@@ -8855,9 +8869,9 @@ extern "C" {
 extern "C" {
     pub fn av_get_codec_tag_string(
         buf: *mut ::std::os::raw::c_char,
-        buf_size: usize,
+        buf_size: size_t,
         codec_tag: ::std::os::raw::c_uint,
-    ) -> usize;
+    ) -> size_t;
 }
 extern "C" {
     pub fn avcodec_string(
@@ -9089,14 +9103,14 @@ extern "C" {
     pub fn av_fast_padded_malloc(
         ptr: *mut ::std::os::raw::c_void,
         size: *mut ::std::os::raw::c_uint,
-        min_size: usize,
+        min_size: size_t,
     );
 }
 extern "C" {
     pub fn av_fast_padded_mallocz(
         ptr: *mut ::std::os::raw::c_void,
         size: *mut ::std::os::raw::c_uint,
-        min_size: usize,
+        min_size: size_t,
     );
 }
 extern "C" {
@@ -9153,7 +9167,7 @@ extern "C" {
     ) -> *const AVCodecDescriptor;
 }
 extern "C" {
-    pub fn av_cpb_properties_alloc(size: *mut usize) -> *mut AVCPBProperties;
+    pub fn av_cpb_properties_alloc(size: *mut size_t) -> *mut AVCPBProperties;
 }
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
@@ -9196,19 +9210,19 @@ extern "C" {
 extern "C" {
     pub fn strftime(
         __s: *mut ::std::os::raw::c_char,
-        __maxsize: usize,
+        __maxsize: size_t,
         __format: *const ::std::os::raw::c_char,
         __tp: *const tm,
-    ) -> usize;
+    ) -> size_t;
 }
 extern "C" {
     pub fn strftime_l(
         __s: *mut ::std::os::raw::c_char,
-        __maxsize: usize,
+        __maxsize: size_t,
         __format: *const ::std::os::raw::c_char,
         __tp: *const tm,
         __loc: locale_t,
-    ) -> usize;
+    ) -> size_t;
 }
 extern "C" {
     pub fn gmtime(__timer: *const time_t) -> *mut tm;
@@ -9727,7 +9741,7 @@ extern "C" {
     pub fn avio_read_to_bprint(
         h: *mut AVIOContext,
         pb: *mut AVBPrint,
-        max_size: usize,
+        max_size: size_t,
     ) -> ::std::os::raw::c_int;
 }
 extern "C" {
@@ -9817,7 +9831,7 @@ pub struct AVOutputFormat {
             s: *mut AVFormatContext,
             type_: ::std::os::raw::c_int,
             data: *mut ::std::os::raw::c_void,
-            data_size: usize,
+            data_size: size_t,
         ) -> ::std::os::raw::c_int,
     >,
     pub write_uncoded_frame: ::std::option::Option<
@@ -10136,7 +10150,7 @@ pub type av_format_control_message = ::std::option::Option<
         s: *mut AVFormatContext,
         type_: ::std::os::raw::c_int,
         data: *mut ::std::os::raw::c_void,
-        data_size: usize,
+        data_size: size_t,
     ) -> ::std::os::raw::c_int,
 >;
 pub type AVOpenCallback = ::std::option::Option<
@@ -10378,7 +10392,7 @@ extern "C" {
         st: *mut AVStream,
         type_: AVPacketSideDataType,
         data: *mut u8,
-        size: usize,
+        size: size_t,
     ) -> ::std::os::raw::c_int;
 }
 extern "C" {
@@ -10850,7 +10864,7 @@ extern "C" {
         s: *mut AVFormatContext,
         type_: AVAppToDevMessageType,
         data: *mut ::std::os::raw::c_void,
-        data_size: usize,
+        data_size: size_t,
     ) -> ::std::os::raw::c_int;
 }
 extern "C" {
@@ -10858,7 +10872,7 @@ extern "C" {
         s: *mut AVFormatContext,
         type_: AVDevToAppMessageType,
         data: *mut ::std::os::raw::c_void,
-        data_size: usize,
+        data_size: size_t,
     ) -> ::std::os::raw::c_int;
 }
 #[repr(C)]
