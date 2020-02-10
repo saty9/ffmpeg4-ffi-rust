@@ -2,6 +2,8 @@
 
 [![cargo](https://img.shields.io/crates/v/ffmpeg4-ffi)](https://crates.io/crates/ffmpeg4-ffi)
 
+FFmpeg headers: 4.2.2
+
 Rust bindings for ffmpeg, fork of ffmpeg-dev
 
 Differences from original repo:
