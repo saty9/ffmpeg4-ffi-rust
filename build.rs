@@ -88,6 +88,7 @@ fn build() {
         ]));
 
         if has_env_var_with_value("FF_DO_CODEGEN", "1") {
+            println!("cargo:warning=doing gen");
             // RUN
             // todo maybe put headers to repo instead of linking against system ones
             bindgen::Builder::default()
@@ -97,6 +98,7 @@ fn build() {
                 .rustfmt_bindings(true)
                 .detect_include_paths(true)
                 .generate_comments(true)
+                .clang_arg("-fretain-comments-from-system-headers")
                 .generate()
                 .expect("Unable to generate bindings")
                 .write_to_file(gen_file_name)
