@@ -1,6 +1,7 @@
 use std::iter::FromIterator;
 use std::collections::HashSet;
 use std::path::PathBuf;
+use std::path::Path;
 use std::env;
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -106,8 +107,14 @@ fn build() {
         }
     }
     // COMPILE CBITS
-    cc::Build::new()
-        .file("cbits/defs.c")
+    let mut builder = &mut cc::Build::new();
+
+    println!("cargo:rerun-if-env-changed={}", "FFMPEG_INCLUDE_PATH");
+    if let Ok(include_path) = std::env::var("FFMPEG_INCLUDE_PATH").map(|x| PathBuf::from(x)) {
+        builder = builder.include(include_path);
+    }
+
+    builder.file("cbits/defs.c")
         .compile("cbits");
 }
 
