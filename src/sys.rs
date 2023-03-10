@@ -442,6 +442,12 @@ pub const SCNoMAX: &'static [u8; 3usize] = b"jo\0";
 pub const SCNuMAX: &'static [u8; 3usize] = b"ju\0";
 pub const SCNxMAX: &'static [u8; 3usize] = b"jx\0";
 pub const __API_TO_BE_DEPRECATED: u32 = 100000;
+pub const __API_TO_BE_DEPRECATED_MACOS: u32 = 100000;
+pub const __API_TO_BE_DEPRECATED_IOS: u32 = 100000;
+pub const __API_TO_BE_DEPRECATED_TVOS: u32 = 100000;
+pub const __API_TO_BE_DEPRECATED_WATCHOS: u32 = 100000;
+pub const __API_TO_BE_DEPRECATED_MACCATALYST: u32 = 100000;
+pub const __API_TO_BE_DEPRECATED_DRIVERKIT: u32 = 100000;
 pub const __MAC_10_0: u32 = 1000;
 pub const __MAC_10_1: u32 = 1010;
 pub const __MAC_10_2: u32 = 1020;
@@ -485,6 +491,8 @@ pub const __MAC_12_0: u32 = 120000;
 pub const __MAC_12_1: u32 = 120100;
 pub const __MAC_12_2: u32 = 120200;
 pub const __MAC_12_3: u32 = 120300;
+pub const __MAC_13_0: u32 = 130000;
+pub const __MAC_13_1: u32 = 130100;
 pub const __IPHONE_2_0: u32 = 20000;
 pub const __IPHONE_2_1: u32 = 20100;
 pub const __IPHONE_2_2: u32 = 20200;
@@ -545,6 +553,9 @@ pub const __IPHONE_15_1: u32 = 150100;
 pub const __IPHONE_15_2: u32 = 150200;
 pub const __IPHONE_15_3: u32 = 150300;
 pub const __IPHONE_15_4: u32 = 150400;
+pub const __IPHONE_16_0: u32 = 160000;
+pub const __IPHONE_16_1: u32 = 160100;
+pub const __IPHONE_16_2: u32 = 160200;
 pub const __TVOS_9_0: u32 = 90000;
 pub const __TVOS_9_1: u32 = 90100;
 pub const __TVOS_9_2: u32 = 90200;
@@ -578,6 +589,9 @@ pub const __TVOS_15_1: u32 = 150100;
 pub const __TVOS_15_2: u32 = 150200;
 pub const __TVOS_15_3: u32 = 150300;
 pub const __TVOS_15_4: u32 = 150400;
+pub const __TVOS_16_0: u32 = 160000;
+pub const __TVOS_16_1: u32 = 160100;
+pub const __TVOS_16_2: u32 = 160200;
 pub const __WATCHOS_1_0: u32 = 10000;
 pub const __WATCHOS_2_0: u32 = 20000;
 pub const __WATCHOS_2_1: u32 = 20100;
@@ -609,6 +623,9 @@ pub const __WATCHOS_8_1: u32 = 80100;
 pub const __WATCHOS_8_3: u32 = 80300;
 pub const __WATCHOS_8_4: u32 = 80400;
 pub const __WATCHOS_8_5: u32 = 80500;
+pub const __WATCHOS_9_0: u32 = 90000;
+pub const __WATCHOS_9_1: u32 = 90100;
+pub const __WATCHOS_9_2: u32 = 90200;
 pub const MAC_OS_X_VERSION_10_0: u32 = 1000;
 pub const MAC_OS_X_VERSION_10_1: u32 = 1010;
 pub const MAC_OS_X_VERSION_10_2: u32 = 1020;
@@ -643,10 +660,11 @@ pub const MAC_OS_X_VERSION_10_15_1: u32 = 101501;
 pub const MAC_OS_X_VERSION_10_16: u32 = 101600;
 pub const MAC_OS_VERSION_11_0: u32 = 110000;
 pub const MAC_OS_VERSION_12_0: u32 = 120000;
+pub const MAC_OS_VERSION_13_0: u32 = 130000;
 pub const __DRIVERKIT_19_0: u32 = 190000;
 pub const __DRIVERKIT_20_0: u32 = 200000;
 pub const __DRIVERKIT_21_0: u32 = 210000;
-pub const __MAC_OS_X_VERSION_MAX_ALLOWED: u32 = 120300;
+pub const __MAC_OS_X_VERSION_MAX_ALLOWED: u32 = 130100;
 pub const __ENABLE_LEGACY_MAC_AVAILABILITY: u32 = 1;
 pub const __DARWIN_WCHAR_MIN: i32 = -2147483648;
 pub const _FORTIFY_SOURCE: u32 = 2;
@@ -952,7 +970,8 @@ pub const RUSAGE_INFO_V2: u32 = 2;
 pub const RUSAGE_INFO_V3: u32 = 3;
 pub const RUSAGE_INFO_V4: u32 = 4;
 pub const RUSAGE_INFO_V5: u32 = 5;
-pub const RUSAGE_INFO_CURRENT: u32 = 5;
+pub const RUSAGE_INFO_V6: u32 = 6;
+pub const RUSAGE_INFO_CURRENT: u32 = 6;
 pub const RU_PROC_RUNS_RESLIDE: u32 = 1;
 pub const RLIMIT_CPU: u32 = 0;
 pub const RLIMIT_FSIZE: u32 = 1;
@@ -986,6 +1005,7 @@ pub const IOPOL_TYPE_VFS_IGNORE_CONTENT_PROTECTION: u32 = 6;
 pub const IOPOL_TYPE_VFS_IGNORE_PERMISSIONS: u32 = 7;
 pub const IOPOL_TYPE_VFS_SKIP_MTIME_UPDATE: u32 = 8;
 pub const IOPOL_TYPE_VFS_ALLOW_LOW_SPACE_WRITES: u32 = 9;
+pub const IOPOL_TYPE_VFS_DISALLOW_RW_FOR_O_EVTONLY: u32 = 10;
 pub const IOPOL_SCOPE_PROCESS: u32 = 0;
 pub const IOPOL_SCOPE_THREAD: u32 = 1;
 pub const IOPOL_SCOPE_DARWIN_BG: u32 = 2;
@@ -1014,6 +1034,8 @@ pub const IOPOL_VFS_SKIP_MTIME_UPDATE_OFF: u32 = 0;
 pub const IOPOL_VFS_SKIP_MTIME_UPDATE_ON: u32 = 1;
 pub const IOPOL_VFS_ALLOW_LOW_SPACE_WRITES_OFF: u32 = 0;
 pub const IOPOL_VFS_ALLOW_LOW_SPACE_WRITES_ON: u32 = 1;
+pub const IOPOL_VFS_DISALLOW_RW_FOR_O_EVTONLY_DEFAULT: u32 = 0;
+pub const IOPOL_VFS_DISALLOW_RW_FOR_O_EVTONLY_ON: u32 = 1;
 pub const WNOHANG: u32 = 1;
 pub const WUNTRACED: u32 = 2;
 pub const WCOREFLAG: u32 = 128;
@@ -3980,7 +4002,55 @@ pub struct rusage_info_v5 {
     pub ri_runnable_time: u64,
     pub ri_flags: u64,
 }
-pub type rusage_info_current = rusage_info_v5;
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct rusage_info_v6 {
+    pub ri_uuid: [u8; 16usize],
+    pub ri_user_time: u64,
+    pub ri_system_time: u64,
+    pub ri_pkg_idle_wkups: u64,
+    pub ri_interrupt_wkups: u64,
+    pub ri_pageins: u64,
+    pub ri_wired_size: u64,
+    pub ri_resident_size: u64,
+    pub ri_phys_footprint: u64,
+    pub ri_proc_start_abstime: u64,
+    pub ri_proc_exit_abstime: u64,
+    pub ri_child_user_time: u64,
+    pub ri_child_system_time: u64,
+    pub ri_child_pkg_idle_wkups: u64,
+    pub ri_child_interrupt_wkups: u64,
+    pub ri_child_pageins: u64,
+    pub ri_child_elapsed_abstime: u64,
+    pub ri_diskio_bytesread: u64,
+    pub ri_diskio_byteswritten: u64,
+    pub ri_cpu_time_qos_default: u64,
+    pub ri_cpu_time_qos_maintenance: u64,
+    pub ri_cpu_time_qos_background: u64,
+    pub ri_cpu_time_qos_utility: u64,
+    pub ri_cpu_time_qos_legacy: u64,
+    pub ri_cpu_time_qos_user_initiated: u64,
+    pub ri_cpu_time_qos_user_interactive: u64,
+    pub ri_billed_system_time: u64,
+    pub ri_serviced_system_time: u64,
+    pub ri_logical_writes: u64,
+    pub ri_lifetime_max_phys_footprint: u64,
+    pub ri_instructions: u64,
+    pub ri_cycles: u64,
+    pub ri_billed_energy: u64,
+    pub ri_serviced_energy: u64,
+    pub ri_interval_max_phys_footprint: u64,
+    pub ri_runnable_time: u64,
+    pub ri_flags: u64,
+    pub ri_user_ptime: u64,
+    pub ri_system_ptime: u64,
+    pub ri_pinstructions: u64,
+    pub ri_pcycles: u64,
+    pub ri_energy_nj: u64,
+    pub ri_penergy_nj: u64,
+    pub ri_reserved: [u64; 14usize],
+}
+pub type rusage_info_current = rusage_info_v6;
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct rlimit {
